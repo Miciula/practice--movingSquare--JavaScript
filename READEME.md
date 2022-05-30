@@ -4,11 +4,11 @@ App made only in JavaScript for training skills.
 
 ## Start App
 
--App is ready to use and starting automatically.
+- App is ready to use and starting automatically.
 
--To start you need Live Server. After switching on you can see Red Square in browser.
+- To start you need Live Server. After switching on you can see Red Square in browser.
 
-## instructions
+## Instructions
 
 -Use arrows keys to move square.
 

@@ -1,93 +1,127 @@
-const square = document.createElement('div')
-const h6 = document.createElement('h6')
+const initMovingSquare = (() => {
 
-let positionX = 0
-let positionY = 0
+  const createSquare = (containerSelector) => {
 
-square.style.backgroundColor = 'red'
-square.style.width = '100px'
-square.style.height = '100px'
-square.style.position = 'absolute'
-square.style.left = positionX + 'px'
-square.style.top = positionY + 'px'
-square.style.zIndex = 1
+    const container = document.querySelector(containerSelector)
 
-h6.innerHTML = 'X=' + String(positionX) + ' | ' + 'Y=' + String(positionY)
-h6.style.position = 'absolute'
-h6.style.left = 0
-h6.style.top = 0
-h6.style.margin = '4px'
-h6.style.zIndex = 2
+    if (!container) return
 
-document.body.appendChild(square)
-document.body.appendChild(h6)
+    const square = document.createElement('div')
 
-changer = () => {
-  square.style.top = positionY + 'px'
-  square.style.left = positionX + 'px'
-  h6.innerHTML = 'X=' + String(positionX) + ' | ' + 'Y=' + String(positionY)
-}
+    square.style.backgroundColor = 'red'
+    square.style.width = '100px'
+    square.style.height = '100px'
+    square.style.position = 'absolute'
+    square.style.left = '0px'
+    square.style.top = '0px'
 
-changeLeft = () => {
-  positionX = positionX - 10
-  if (positionX <= 0) {
-    positionX = 0
-    changer()
-  } else {
-    changer()
+    container.appendChild(square)
+
+    return square
   }
-}
+  const createParagraph = (containerSelector) => {
 
-changeRight = () => {
-  positionX = positionX + 10
-  if (positionX <= (innerWidth - 100)) {
-    changer()
-  } else {
-    positionX = innerWidth - 100
-    changer()
+    const container = document.querySelector(containerSelector)
+
+    if (!container) return
+
+    const p = document.createElement('p')
+
+    p.style.position = 'absolute'
+    p.style.width = '1px'
+    p.style.height = '1px'
+    p.style.left = '35px'
+    p.style.top = '17px'
+
+    container.appendChild(p)
+
+    return p
   }
-}
 
-changeTop = () => {
-  positionY = positionY - 10
-  if (positionY <= 0) {
-    positionY = 0
-    changer()
-  } else {
-    changer()
+  const square = createSquare('body')
+  const p = createParagraph('div')
+
+  let positionX = 0
+  let positionY = 0
+
+  p.innerHTML = `X=${positionX} Y=${positionY}`
+
+  const render = () => {
+    updatingSquare()
+    updatingStats()
   }
-}
 
-changeBot = () => {
-  positionY = positionY + 10
-  if (positionY <= (innerHeight - 100)) {
-    changer()
-  } else {
-    positionY = innerHeight - 100
-    changer()
+  const updatingStats = () => {
+    p.innerHTML = `X=${positionX} Y=${positionY}`
   }
-}
 
-mover = (e) => {
-  switch (e.key) {
-    case 'ArrowRight':
-      changeRight();
-      break;
-    case 'ArrowLeft':
-      changeLeft();
-      break;
-    case 'ArrowUp':
-      changeTop();
-      break;
-    case 'ArrowDown':
-      changeBot();
-      break;
-    default:
-      break
+  const updatingSquare = () => {
+    square.style.top = positionY + 'px'
+    square.style.left = positionX + 'px'
   }
-}
 
-window.addEventListener(
-  'keydown',
-  mover
-)
+  const moveLeft = () => {
+    positionX = positionX - 10
+    if (positionX <= 0) {
+      positionX = 0
+      render()
+    } else {
+      render()
+    }
+  }
+
+  const moveRight = () => {
+    positionX = positionX + 10
+    if (positionX <= (innerWidth - 101)) {
+      render()
+    } else {
+      positionX = innerWidth - 101
+      render()
+    }
+  }
+
+  const moveTop = () => {
+    positionY = positionY - 10
+    if (positionY <= 0) {
+      positionY = 0
+      render()
+    } else {
+      render()
+    }
+  }
+
+  const moveBot = () => {
+    positionY = positionY + 10
+    if (positionY <= (innerHeight - 101)) {
+      render()
+    } else {
+      positionY = innerHeight - 101
+      render()
+    }
+  }
+
+  const updateSquarePosition = (e) => {
+    switch (e.key) {
+      case 'ArrowRight':
+        moveRight();
+        break;
+      case 'ArrowLeft':
+        moveLeft();
+        break;
+      case 'ArrowUp':
+        moveTop();
+        break;
+      case 'ArrowDown':
+        moveBot();
+        break;
+      default:
+        break
+    }
+  }
+
+  window.addEventListener(
+    'keydown',
+    updateSquarePosition
+  )
+
+})()
