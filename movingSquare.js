@@ -1,25 +1,22 @@
 const initMovingSquare = (() => {
 
+  let positionX = 0
+  let positionY = 0
+
   const createSquare = (containerSelector) => {
 
-    const square = document.createElement('div')
+    const square1 = document.createElement('div')
 
-    square.style.backgroundColor = 'red'
-    square.style.width = '100px'
-    square.style.height = '100px'
-    square.style.position = 'absolute'
-    square.style.left = '0px'
-    square.style.top = '0px'
+    square1.style.backgroundColor = 'red'
+    square1.style.width = '100px'
+    square1.style.height = '100px'
+    square1.style.position = 'absolute'
+    square1.style.left = '0px'
+    square1.style.top = '0px'
 
-    addChildToContainer(containerSelector, square)
+    addChildToContainer(containerSelector, square1)
 
-    return square
-  }
-
-  const addChildToContainer = (containerSelector, e) => {
-
-    const container = document.querySelector(containerSelector).appendChild(e)
-    if (!container) return
+    return square1
   }
 
   const createParagraph = (containerSelector) => {
@@ -37,11 +34,14 @@ const initMovingSquare = (() => {
     return p
   }
 
+  const addChildToContainer = (containerSelector, e) => {
+
+    const container = document.querySelector(containerSelector).appendChild(e)
+    if (!container) return
+  }
+
   const square = createSquare('body')
   const p = createParagraph('div')
-
-  let positionX = 0
-  let positionY = 0
 
   p.innerHTML = `X=${positionX} Y=${positionY}`
 
