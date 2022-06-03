@@ -2,10 +2,6 @@ const initMovingSquare = (() => {
 
   const createSquare = (containerSelector) => {
 
-    const container = document.querySelector(containerSelector)
-
-    if (!container) return
-
     const square = document.createElement('div')
 
     square.style.backgroundColor = 'red'
@@ -15,15 +11,18 @@ const initMovingSquare = (() => {
     square.style.left = '0px'
     square.style.top = '0px'
 
-    container.appendChild(square)
+    addChildToContainer(containerSelector, square)
 
     return square
   }
-  const createParagraph = (containerSelector) => {
 
-    const container = document.querySelector(containerSelector)
+  const addChildToContainer = (containerSelector, e) => {
 
+    const container = document.querySelector(containerSelector).appendChild(e)
     if (!container) return
+  }
+
+  const createParagraph = (containerSelector) => {
 
     const p = document.createElement('p')
 
@@ -33,7 +32,7 @@ const initMovingSquare = (() => {
     p.style.left = '35px'
     p.style.top = '17px'
 
-    container.appendChild(p)
+    addChildToContainer(containerSelector, p)
 
     return p
   }
