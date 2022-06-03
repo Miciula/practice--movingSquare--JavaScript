@@ -10,6 +10,6 @@ App made only in JavaScript for training skills.
 
 ## Instructions
 
--Use arrows keys to move square.
+- Use arrows keys to move square.
 
--Square working only in ViewPort. You can't go beyond the borders.
+- Square working only in ViewPort. You can't go beyond the borders.
