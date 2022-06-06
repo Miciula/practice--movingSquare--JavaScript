@@ -2,7 +2,7 @@ const initMovingSquare = (() => {
 
   let positionX = 0
   let positionY = 0
-  const moveDistance = 1
+  const moveDistance = 10
 
   const createSquare = (containerSelector) => {
 
@@ -89,7 +89,7 @@ const initMovingSquare = (() => {
     }
   }
 
-  const moveBot = () => {
+  const moveBottom = () => {
     positionY = positionY + moveDistance
     if (positionY <= (innerHeight - 101)) {
       render()
@@ -111,7 +111,7 @@ const initMovingSquare = (() => {
         moveTop();
         break;
       case 'ArrowDown':
-        moveBot();
+        moveBottom();
         break;
       default:
         break
