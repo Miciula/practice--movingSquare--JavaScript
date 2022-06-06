@@ -45,7 +45,7 @@ const initMovingSquare = (() => {
   const p = createParagraph('div')
 
   const render = () => {
-    updatingSquare()
+    updateSquare()
     updateStatus()
   }
 
@@ -53,7 +53,7 @@ const initMovingSquare = (() => {
     p.innerHTML = `X=${positionX} Y=${positionY}`
   }
 
-  const updatingSquare = () => {
+  const updateSquare= () => {
     square.style.top = positionY + 'px'
     square.style.left = positionX + 'px'
   }
