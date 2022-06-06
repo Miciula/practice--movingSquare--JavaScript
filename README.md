@@ -12,4 +12,6 @@ App made only in JavaScript for training skills.
 
 - Use arrows keys to move square.
 
+- You can change distance who square travels. `moveDistance` = 10
+
 - Square working only in ViewPort. You can't go beyond the borders.
