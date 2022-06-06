@@ -28,6 +28,7 @@ const initMovingSquare = (() => {
     p.style.height = '1px'
     p.style.left = '35px'
     p.style.top = '17px'
+    p.innerHTML = `X=${positionX} Y=${positionY}`
 
     addChildToContainer(containerSelector, p)
 
@@ -43,14 +44,12 @@ const initMovingSquare = (() => {
   const square = createSquare('body')
   const p = createParagraph('div')
 
-  p.innerHTML = `X=${positionX} Y=${positionY}`
-
   const render = () => {
     updatingSquare()
-    updatingStats()
+    updateStatus()
   }
 
-  const updatingStats = () => {
+  const updateStatus = () => {
     p.innerHTML = `X=${positionX} Y=${positionY}`
   }
 
