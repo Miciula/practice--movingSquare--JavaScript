@@ -2,6 +2,7 @@ const initMovingSquare = (() => {
 
   let positionX = 0
   let positionY = 0
+  const moveDistance = 1
 
   const createSquare = (containerSelector) => {
 
@@ -59,7 +60,7 @@ const initMovingSquare = (() => {
   }
 
   const moveLeft = () => {
-    positionX = positionX - 10
+    positionX = positionX - moveDistance
     if (positionX <= 0) {
       positionX = 0
       render()
@@ -69,7 +70,7 @@ const initMovingSquare = (() => {
   }
 
   const moveRight = () => {
-    positionX = positionX + 10
+    positionX = positionX + moveDistance
     if (positionX <= (innerWidth - 101)) {
       render()
     } else {
@@ -79,7 +80,7 @@ const initMovingSquare = (() => {
   }
 
   const moveTop = () => {
-    positionY = positionY - 10
+    positionY = positionY - moveDistance
     if (positionY <= 0) {
       positionY = 0
       render()
@@ -89,7 +90,7 @@ const initMovingSquare = (() => {
   }
 
   const moveBot = () => {
-    positionY = positionY + 10
+    positionY = positionY + moveDistance
     if (positionY <= (innerHeight - 101)) {
       render()
     } else {
